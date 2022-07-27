@@ -26,10 +26,22 @@ header {
     margin-right: 5rem;
 }
 
-.timer {
+.time-remaining {
+    display: flex;
+    
+}
+
+.timer-text {
     display: flex;
     flex-wrap: wrap;
     font-size: 2.5rem;
+}
+
+.timer-element {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 2.5rem;
+    margin-left: 1rem;
 }
 
 .high-scores {
@@ -46,8 +58,8 @@ header {
 }
 
 .big-box {
-    width: 50%;
-    height: 65%;
+    width: 70%;
+    height: 70%;
     background-color: rgb(223, 229, 234);
     margin: 20px 50px;
     padding: 40px;
