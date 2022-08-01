@@ -143,13 +143,21 @@ function askQuestion1() {
         newAnswer.classList.add("answers"); 
     }
 
-    // style the answers on hover and click... respond to click (is it correct or incorrect?)
-    var allAnswers = document.querySelectorAll(".answers");
-    allAnswers.forEach(answers => {
+    // style the answers on hover and click in css... respond to click (is it correct or incorrect?)
+    var answers = document.querySelectorAll(".answers");
+    answers.forEach(item => {
         // 
-        answers.addEventListener("click", function clickStyle(event) {
-            // console.log("answer selected: " + Object.keys(question1.choices), event);
-            answers.setAttribute("style", "font-weight: 3rem");
+        item.addEventListener("click", function clickEvent(event) {
+            console.log("answer selected: " + this.innerHTML);
+            item.setAttribute("style", "font-weight: 800"); // can take this out and put into css if wanted
+            // Go through each item in a for loop. if item === correctAnswer, add class to that element..
+            if (this.innerHTML === "README.md") {
+                item.setAttribute("id", "correct");
+                console.log("correct!!");
+            }
+            else {
+                console.log("nope");
+            }
         });
 });
         // This event listener activates function to check if right or wrong
