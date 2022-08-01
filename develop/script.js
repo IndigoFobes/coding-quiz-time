@@ -3,11 +3,24 @@ var highScores = document.querySelector(".high-scores")
 var timerElement = document.querySelector(".timer-element");
 var intro = document.querySelector(".intro");
 var startQuizBtn = document.querySelector(".start-quiz");
+var hideStart = document.querySelector(".hide-start");
+var bigBox = document.querySelector(".big-box");
 
 var youWin = false;
 var youLose;
 var timer;
 var timerCount;
+
+//Styles
+//var questionStyles = document.querySelector(".question-styles")
+
+// IDK about this one...
+firstStyle = {
+    "background-color": "purple",
+    "border-radius": "2rem",
+    "width": "10rem",
+    "height": "10rem",
+}
 
 // I will have an array of questions and answers...
 var question1 = {
@@ -88,6 +101,10 @@ function init() {
     //getHighScores()
 }
 
+
+
+
+
 // Define startQuiz function: When quiz starts, the timer is at 90. 
 // The startTimer function is called, so that the time immediately begins decrementing.
 // askQuestion function called
@@ -95,12 +112,25 @@ function startQuiz() {
     timerCount = 90;
     startTimer();
     intro.setAttribute("style", "display: none");
-    startQuizBtn.setAttribute("style", "display: none");
-    //askQuestion();
+    hideStart.setAttribute("style", "display: none");
+
+    askQuestion1();
 }
 
 
-
+// Define function askQuestion1()
+function askQuestion1() {
+    var question1Box = document.createElement("p");
+    var question1Text = document.createTextNode(question1.question); 
+    question1Box.appendChild(question1Text);
+    bigBox.appendChild(question1Box);
+    question1Box.classList.add("questionStyles");
+    //var question1Box = document.createElement("div");
+    //bigBox.appendChild(question1Box);
+    //Object.assign(question1Box.style, firstStyle);
+    //var question1Text = document.createElement("p");
+    //question1Box.append
+}
 
 // Define timer function.
 function startTimer() {

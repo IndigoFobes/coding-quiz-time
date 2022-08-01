@@ -83,4 +83,11 @@ header {
     border-color: rgb(233, 160, 33);
 }
 
+.questionStyles {
+    color: rgb(233, 160, 33);
+    margin: 4%;
+    text-align: center;
+    font-size: 5rem;
+}
+
 /*rgb(223, 229, 234)*/
