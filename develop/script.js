@@ -119,15 +119,17 @@ function startQuiz() {
 
 // Define function askQuestion1()
 function askQuestion1() {
-    var question1Box = document.createElement("p");
+    var question1Div = document.createElement("div"); // This thing needs its own class
+    bigBox.appendChild(question1Div);
+    var question1Box = document.createElement("p"); // Then this thing needs to be separate from the ul
     var question1Text = document.createTextNode(question1.question); 
     question1Box.appendChild(question1Text);
-    bigBox.appendChild(question1Box);
+    question1Div.appendChild(question1Box);
     question1Box.classList.add("questionStyles");
     var question1Answers = document.createElement("ul");
-    question1Box.appendChild(question1Answers);
+    question1Div.appendChild(question1Answers);
 
-    // Put questions in random order as list items (i.e. multiple choice questions)
+    // Show questions as list items (i.e. multiple choice questions)
     for (i=0; i<4; i++) {
         var arr = Object.values(question1.choices);
         var newAnswer = document.createElement("li");
