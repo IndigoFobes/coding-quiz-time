@@ -33,11 +33,11 @@ var question1 = {
     }
 }
 var question2 = {
-    question: "What kind of file do you need to include in your repository in order to describe your code and explain how to use it?",
+    question: "This is question number two!",
     choices: {
-        correctAnswer: "README.md",
         incorrectAnswer1: "index.html",
         incorrectAnswer2: "script.js",
+        correctAnswer: "right answer!",
         incorrectAnswer3: "google doc"
     }
 }
@@ -119,15 +119,19 @@ function startQuiz() {
 
 // Define function askQuestion1()
 function askQuestion1() {
-    var question1Div = document.createElement("div"); // This thing needs its own class
+    var question1Div = document.createElement("div");
+    question1Div.classList.add("divStyle");
     bigBox.appendChild(question1Div);
-    var question1Box = document.createElement("p"); // Then this thing needs to be separate from the ul
+    var question1Box = document.createElement("p"); 
     var question1Text = document.createTextNode(question1.question); 
     question1Box.appendChild(question1Text);
     question1Div.appendChild(question1Box);
     question1Box.classList.add("questionStyles");
     var question1Answers = document.createElement("ul");
+    question1Answers.classList.add("answerStyles");
     question1Div.appendChild(question1Answers);
+    bigBox.classList.remove("center-alignment"); // remove center alignment once quiz is started
+
 
     // Show questions as list items (i.e. multiple choice questions)
     for (i=0; i<4; i++) {
@@ -136,7 +140,19 @@ function askQuestion1() {
         var newAnswerText = document.createTextNode(arr[i]);
         newAnswer.appendChild(newAnswerText);
         question1Answers.appendChild(newAnswer);
+        newAnswer.classList.add("answers"); 
     }
+
+    // style the answers on hover and click... respond to click (is it correct or incorrect?)
+    var allAnswers = document.querySelectorAll(".answers");
+    allAnswers.forEach(answers => {
+        // 
+        answers.addEventListener("click", function clickStyle(event) {
+            // console.log("answer selected: " + Object.keys(question1.choices), event);
+            answers.setAttribute("style", "font-weight: 3rem");
+        });
+});
+        // This event listener activates function to check if right or wrong
 }
 
 // Define timer function.

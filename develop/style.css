@@ -68,6 +68,9 @@ header {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+}
+
+.center-alignment {
     align-items: center;
     justify-content: space-evenly;
 }
@@ -83,14 +86,39 @@ header {
     border-color: rgb(233, 160, 33);
 }
 
+.divStyle {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
 .questionStyles {
-    color: rgb(233, 160, 33);
+    color: rgb(20, 20, 20);
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    font-size: 5rem;
+    font-size: 3.4rem;
     justify-content: flex-start;
+    margin: 1.5rem 2rem 1rem 2rem;
+}
 
+.answerStyles {
+    font-size: 3rem;
+    margin: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* for styling between individual answers */
+.answers {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.answers:hover {
+    color:rgb(233, 160, 33);
+    font-weight: 1.5rem;
+    cursor: pointer;
 }
 
 /*rgb(223, 229, 234)*/
