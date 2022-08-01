@@ -102,9 +102,6 @@ function init() {
 }
 
 
-
-
-
 // Define startQuiz function: When quiz starts, the timer is at 90. 
 // The startTimer function is called, so that the time immediately begins decrementing.
 // askQuestion function called
@@ -141,26 +138,25 @@ function askQuestion1() {
         newAnswer.appendChild(newAnswerText);
         question1Answers.appendChild(newAnswer);
         newAnswer.classList.add("answers"); 
+        
     }
 
-    // style the answers on hover and click in css... respond to click (is it correct or incorrect?)
+    // Array of answers
+    var arrayKeys = Object.keys(question1.choices); // This is the array
+        console.log(arrayKeys);
+
+    // New variable for correct answer. Give it a class (.right) to target in event listener.
+    var rightAnswer = question1.choices.correctAnswer;
+    rightAnswer.classList.add("right");
+    console.log(rightAnswer);
+
     var answers = document.querySelectorAll(".answers");
-    answers.forEach(item => {
-        // 
-        item.addEventListener("click", function clickEvent(event) {
-            console.log("answer selected: " + this.innerHTML);
-            item.setAttribute("style", "font-weight: 800"); // can take this out and put into css if wanted
-            // Go through each item in a for loop. if item === correctAnswer, add class to that element..
-            if (this.innerHTML === "README.md") {
-                item.setAttribute("id", "correct");
-                console.log("correct!!");
-            }
-            else {
-                console.log("nope");
-            }
-        });
-});
-        // This event listener activates function to check if right or wrong
+    answers.addEventListener("click", function isItRight(event) {
+       // if (event.target.matches(".right")) //// 
+    }, false);
+
+
+
 }
 
 // Define timer function.
@@ -193,3 +189,32 @@ init()
     //Object.assign(question1Box.style, firstStyle);
     //var question1Text = document.createElement("p");
     //question1Box.append
+    //item.setAttribute("style", "font-weight: 800"); // can take this out and put into css if wanted
+    //console.log(arr); // This logs the property's names as an array
+    //if (this === "correctAnswer") {
+       // item.setAttribute("id", "correct");
+        //console.log("correct!!");
+    //}
+   // else {
+        //console.log("nope");
+        //console.log(this);
+    //}
+
+    //console.log("answer selected: " + this.innerHTML); // logs the selected answer
+
+            // Go through each item. if item === correctAnswer, add id to that element..
+            //var arr = Object.keys(question1.choices);
+
+             // This puts our answer choices into an array...
+   // var arr = Object.values(question1.choices);
+   // console.log(arr);
+    
+    // Goes through each index in the array
+   // for (i=0; i<4; i++) {
+   //     var answers = arr[index]
+    //}
+
+
+        //answer.addEventListener("click", function isItRight() {
+        //console.log(i)
+       // });
