@@ -113,7 +113,6 @@ function startQuiz() {
     startTimer();
     intro.setAttribute("style", "display: none");
     hideStart.setAttribute("style", "display: none");
-
     askQuestion1();
 }
 
@@ -125,11 +124,17 @@ function askQuestion1() {
     question1Box.appendChild(question1Text);
     bigBox.appendChild(question1Box);
     question1Box.classList.add("questionStyles");
-    //var question1Box = document.createElement("div");
-    //bigBox.appendChild(question1Box);
-    //Object.assign(question1Box.style, firstStyle);
-    //var question1Text = document.createElement("p");
-    //question1Box.append
+    var question1Answers = document.createElement("ul");
+    question1Box.appendChild(question1Answers);
+
+    // Put questions in random order as list items (i.e. multiple choice questions)
+    for (i=0; i<4; i++) {
+        var arr = Object.values(question1.choices);
+        var newAnswer = document.createElement("li");
+        var newAnswerText = document.createTextNode(arr[i]);
+        newAnswer.appendChild(newAnswerText);
+        question1Answers.appendChild(newAnswer);
+    }
 }
 
 // Define timer function.
@@ -153,3 +158,12 @@ function startTimer() {
 startQuizBtn.addEventListener("click", startQuiz);
 
 init()
+
+
+
+//random snippets to be deleted later
+//var question1Box = document.createElement("div");
+    //bigBox.appendChild(question1Box);
+    //Object.assign(question1Box.style, firstStyle);
+    //var question1Text = document.createElement("p");
+    //question1Box.append
