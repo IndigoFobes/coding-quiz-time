@@ -15,6 +15,6 @@ This is currently a work in progress. I will be coming back to this to resubmit 
 ![Screenshot](screenshot-quiz.png)
 
 ## Deployed Application
-Click [here]() for live URL.
+Click [here](https://indigofobes.github.io/coding-quiz-time/develop/) for live URL.
 
 Click [here](https://github.com/IndigoFobes/coding-quiz-time.git) for GitHub repository.
