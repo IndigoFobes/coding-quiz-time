@@ -23,78 +23,45 @@ firstStyle = {
 }
 
 // I will have an array of questions and answers...
-var question1 = {
-    question: "What kind of file do you need to include in your repository in order to describe your code and explain how to use it?",
-    choices: {
-        correctAnswer: "README.md",
-        incorrectAnswer1: "index.html",
-        incorrectAnswer2: "script.js",
-        incorrectAnswer3: "google doc"
-    }
-}
-var question2 = {
-    question: "This is question number two!",
-    choices: {
-        incorrectAnswer1: "index.html",
-        incorrectAnswer2: "script.js",
-        correctAnswer: "right answer!",
-        incorrectAnswer3: "google doc"
-    }
-}
-var question3 = {
-    question: "What kind of file do you need to include in your repository in order to describe your code and explain how to use it?",
-    choices: {
-        correctAnswer: "README.md",
-        incorrectAnswer1: "index.html",
-        incorrectAnswer2: "script.js",
-        incorrectAnswer3: "google doc"
-    }
-}
-var question4 = {
-    question: "What kind of file do you need to include in your repository in order to describe your code and explain how to use it?",
-    choices: {
-        correctAnswer: "README.md",
-        incorrectAnswer1: "index.html",
-        incorrectAnswer2: "script.js",
-        incorrectAnswer3: "google doc"
-    }
-}
-var question5 = {
-    question: "What kind of file do you need to include in your repository in order to describe your code and explain how to use it?",
-    choices: {
-        correctAnswer: "README.md",
-        incorrectAnswer1: "index.html",
-        incorrectAnswer2: "script.js",
-        incorrectAnswer3: "google doc"
-    }
-}
-var question6 = {
-    question: "What kind of file do you need to include in your repository in order to describe your code and explain how to use it?",
-    choices: {
-        correctAnswer: "README.md",
-        incorrectAnswer1: "index.html",
-        incorrectAnswer2: "script.js",
-        incorrectAnswer3: "google doc"
-    }
-}
-var question7 = {
-    question: "What kind of file do you need to include in your repository in order to describe your code and explain how to use it?",
-    choices: {
-        correctAnswer: "README.md",
-        incorrectAnswer1: "index.html",
-        incorrectAnswer2: "script.js",
-        incorrectAnswer3: "google doc"
-    }
-}
-var question8 = {
-    question: "What kind of file do you need to include in your repository in order to describe your code and explain how to use it?",
-    choices: {
-        correctAnswer: "README.md",
-        incorrectAnswer1: "index.html",
-        incorrectAnswer2: "script.js",
-        incorrectAnswer3: "google doc"
-    }
-}
+var questions = [
+{question1: "What is this?",
+choices: [
+    "README.md",
+    "index.html",
+    "script.js",
+    "google doc"
+]},
+{question2: "Now the next question",
+choices: [
+    "README.md",
+    "index.html",
+    "script.js",
+    "google doc"
+]},
+{question3: "Now the next question",
+choices: [
+    "README.md",
+    "index.html",
+    "script.js",
+    "google doc"
+]},
+{question4: "Now the next question",
+choices: [
+    "README.md",
+    "index.html",
+    "script.js",
+    "google doc"
+]},
+{question5: "Now the next question",
+choices: [
+    "README.md",
+    "index.html",
+    "script.js",
+    "google doc"
+]},
+]
+
+console.log(questions.choices[0]);
 
 // This function runs as soon as page loads. It gets user's high score info.
 function init() {
