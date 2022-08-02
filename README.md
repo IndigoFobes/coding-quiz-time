@@ -1,6 +1,8 @@
 # coding-quiz-time
 ## Description
-The goal of this challenge is to create a quiz that asks coding-related questions, tracks highscores, and incorporates a timer.
+The goal of this challenge is to create a quiz that asks coding-related questions, tracks highscores, and incorporates a timer. 
+
+This is currently a work in progress. I will be coming back to this to resubmit ASAP.
 
 ## Acceptance Criteria
 1. When the user clicks the start button, a timer starts and the first question appears.
@@ -14,4 +16,5 @@ The goal of this challenge is to create a quiz that asks coding-related question
 
 ## Deployed Application
 Click [here]() for live URL.
+
 Click [here](https://github.com/IndigoFobes/coding-quiz-time.git) for GitHub repository.
