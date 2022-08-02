@@ -24,44 +24,53 @@ firstStyle = {
 
 // I will have an array of questions and answers...
 var questions = [
-{question1: "What is this?",
+{question: "What kind of file do you need to include in your repository to describe your application and how to use it?",
 choices: [
     "README.md",
     "index.html",
     "script.js",
     "google doc"
-]},
-{question2: "Now the next question",
+],
+answer: "README.md"},
+
+{question: "What is this?",
 choices: [
     "README.md",
     "index.html",
     "script.js",
     "google doc"
-]},
-{question3: "Now the next question",
+],
+answer: "README.md"},
+
+{question: "What is this?",
 choices: [
     "README.md",
     "index.html",
     "script.js",
     "google doc"
-]},
-{question4: "Now the next question",
+],
+answer: "README.md"},
+
+{question: "What is this?",
 choices: [
     "README.md",
     "index.html",
     "script.js",
     "google doc"
-]},
-{question5: "Now the next question",
+],
+answer: "README.md"},
+
+{question: "What is this?",
 choices: [
     "README.md",
     "index.html",
     "script.js",
     "google doc"
-]},
+],
+answer: "README.md"},
 ]
 
-console.log(questions.choices[0]);
+console.log(questions[0].answer);
 
 // This function runs as soon as page loads. It gets user's high score info.
 function init() {
@@ -77,17 +86,18 @@ function startQuiz() {
     startTimer();
     intro.setAttribute("style", "display: none");
     hideStart.setAttribute("style", "display: none");
-    askQuestion1();
+    askQuestion();
 }
 
 
 // Define function askQuestion1()
-function askQuestion1() {
+function askQuestion() {
+    for (i=0; i<questions.length; i++) {
     var question1Div = document.createElement("div");
     question1Div.classList.add("divStyle");
     bigBox.appendChild(question1Div);
     var question1Box = document.createElement("p"); 
-    var question1Text = document.createTextNode(question1.question); 
+    var question1Text = document.createTextNode(questions[i].question); 
     question1Box.appendChild(question1Text);
     question1Div.appendChild(question1Box);
     question1Box.classList.add("questionStyles");
@@ -124,7 +134,7 @@ function askQuestion1() {
 
 
 
-}
+}}
 
 // Define timer function.
 function startTimer() {
