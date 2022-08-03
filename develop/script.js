@@ -70,7 +70,7 @@ choices: [
 answer: "README.md"},
 ]
 
-console.log(questions[0].answer);
+//console.log(questions[0].answer);
 
 // This function runs as soon as page loads. It gets user's high score info.
 function init() {
@@ -144,10 +144,8 @@ function askQuestion() {
           isItRight();
         };
         function isItRight() {
-            //console.log(d.innerHTML);
-            console.log(questions[i].answer);
             // If the selected choice is the same as the answer...
-            if (questions[i].choices[d.innerHTML] === questions[i].answer) {
+            if (d.innerHTML === questions[i].answer) {
                 console.log("correct!")
             };
           }
