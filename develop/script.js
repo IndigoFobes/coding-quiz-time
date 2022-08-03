@@ -138,12 +138,22 @@ function askQuestion() {
     }
 
     // Event listener for answers. JQuery would be easier lol.
-    document.addEventListener('click',function(e){
-        if(e.target && e.target.id== 'answerClick'){
-              console.log("hello")
-         }
-     });
+    document.body.addEventListener( 'click', function ( e ) {
+        if( e.target.id == 'answerClick' ) {
+            var d = e.target;
+          isItRight();
+        };
+        function isItRight() {
+            //console.log(d.innerHTML);
+            console.log(questions[i].answer);
+            // If the selected choice is the same as the answer...
+            if (questions[i].choices[d.innerHTML] === questions[i].answer) {
+                console.log("correct!")
+            };
+          }
+      } );
     // Define function isItRight.
+    
     // If the user selection clicks the right answer, move on. Else, move on with time-5.
    
     
