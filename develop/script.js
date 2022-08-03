@@ -89,12 +89,12 @@ function startQuiz() {
     askQuestion();
 }
 
+  // This is our starting iteration. 
+  let i = 0;
 
 // Define function askQuestion1()
 function askQuestion() {
-    // { 
-    // This is our starting iteration. 
-    var i = 0;
+   // do { 
     // Create a div (a container for each question).
     var questionDiv = document.createElement("div");
     // Add a class to that div (to style in css).
@@ -137,7 +137,7 @@ function askQuestion() {
         
     }
 
-    
+
     // Event listener for answers. JQuery would be easier lol.
     document.body.addEventListener( 'click', function ( e ) {
         if( e.target.id == 'answerClick' ) {
@@ -157,6 +157,7 @@ function askQuestion() {
                 console.log("not it fam.");
                 // Trigger the function to subtract time from timer.
                 subtractTime();
+                nextQuestion();
             };
           }
       } );
@@ -165,19 +166,20 @@ function askQuestion() {
     function nextQuestion() {
         // First, hide the active div with question/answers
         questionDiv.classList.add("hideDiv");
-
-    }
+        i++;
+        askQuestion();
+    };
    
     // Define subtractTime
     function subtractTime() {
         // Subtract 5 seconds from timer.
         timerCount -= 5;
-        nextQuestion();
-    }
+    };
 
+    
 
-
-}//} Commented out the for loop for now.
+//} while (i <= questions.length && );
+}
 
 // Define timer function.
 function startTimer() {
@@ -203,38 +205,3 @@ init()
 
 
 
-//random snippets to be deleted later
-//var question1Box = document.createElement("div");
-    //bigBox.appendChild(question1Box);
-    //Object.assign(question1Box.style, firstStyle);
-    //var question1Text = document.createElement("p");
-    //question1Box.append
-    //item.setAttribute("style", "font-weight: 800"); // can take this out and put into css if wanted
-    //console.log(arr); // This logs the property's names as an array
-    //if (this === "correctAnswer") {
-       // item.setAttribute("id", "correct");
-        //console.log("correct!!");
-    //}
-   // else {
-        //console.log("nope");
-        //console.log(this);
-    //}
-
-    //console.log("answer selected: " + this.innerHTML); // logs the selected answer
-
-            // Go through each item. if item === correctAnswer, add id to that element..
-            //var arr = Object.keys(question1.choices);
-
-             // This puts our answer choices into an array...
-   // var arr = Object.values(question1.choices);
-   // console.log(arr);
-    
-    // Goes through each index in the array
-   // for (i=0; i<4; i++) {
-   //     var answers = arr[index]
-    //}
-
-
-        //answer.addEventListener("click", function isItRight() {
-        //console.log(i)
-       // });
