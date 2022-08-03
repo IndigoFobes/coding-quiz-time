@@ -92,49 +92,65 @@ function startQuiz() {
 
 // Define function askQuestion1()
 function askQuestion() {
-    for (i=0; i<questions.length; i++) {
-    var question1Div = document.createElement("div");
-    question1Div.classList.add("divStyle");
-    bigBox.appendChild(question1Div);
-    var question1Box = document.createElement("p"); 
-    var question1Text = document.createTextNode(questions[i].question); 
-    question1Box.appendChild(question1Text);
-    question1Div.appendChild(question1Box);
-    question1Box.classList.add("questionStyles");
-    var question1Answers = document.createElement("ul");
-    question1Answers.classList.add("answerStyles");
-    question1Div.appendChild(question1Answers);
-    bigBox.classList.remove("center-alignment"); // remove center alignment once quiz is started
+    // This loop goes through each question. We're gonna create a new set of divs for each question.
+  //  for (i=0; i<questions.length; i++) {
+    // Create a div (a container for each question).
+    var i = 0;
+    var questionDiv = document.createElement("div");
+    // Add a class to that div (to style in css).
+    questionDiv.classList.add("divStyle");
+    // Append this new div to the big box.
+    bigBox.appendChild(questionDiv);
+    // This p tag is where the question text goes.
+    var questionBox = document.createElement("p"); 
+    // Give the question p tag a class (to style in css).
+    questionBox.classList.add("questionStyles");
+    // The text will be each question within the questions array.
+    var questionText = document.createTextNode(questions[i].question);
+    // Append text to p tag.
+    questionBox.appendChild(questionText);
+    // Append the question p tag to the question div wihtin the big box.
+    questionDiv.appendChild(questionBox);
+    // Create an un ordered list for the multiple choice answers.
+    var questionAnswers = document.createElement("ul");
+    // Give it a class for STYLE.
+    questionAnswers.classList.add("answerStyles");
+    // Append this un ordered list to the question container.
+    questionDiv.appendChild(questionAnswers);
+    // Remove the center alignment previously placed on this container.
+    bigBox.classList.remove("center-alignment");
 
 
-    // Show questions as list items (i.e. multiple choice questions)
-    for (i=0; i<4; i++) {
-        var arr = Object.values(question1.choices);
+    // This loop goes through each set of choices within each question.
+    for (w=0; w<4; w++) {
+        // Create a list item for each answer choice.
         var newAnswer = document.createElement("li");
-        var newAnswerText = document.createTextNode(arr[i]);
+        // This will grab each item in the choices array and make it the text of each li.
+        var newAnswerText = document.createTextNode(questions[i].choices[w]); 
+        // Append the text to the li.
         newAnswer.appendChild(newAnswerText);
-        question1Answers.appendChild(newAnswer);
+        // Now append the new list items to the unordered list created a few lines above, before the loop.
+        questionAnswers.appendChild(newAnswer);
+        // Give a class for some classy style.
         newAnswer.classList.add("answers"); 
+        newAnswer.setAttribute('id', 'answerClick')
         
     }
 
-    // Array of answers
-    var arrayKeys = Object.keys(question1.choices); // This is the array
-        console.log(arrayKeys);
-
-    // New variable for correct answer. Give it a class (.right) to target in event listener.
-    var rightAnswer = question1.choices.correctAnswer;
-    rightAnswer.classList.add("right");
-    console.log(rightAnswer);
-
-    var answers = document.querySelectorAll(".answers");
-    answers.addEventListener("click", function isItRight(event) {
-       // if (event.target.matches(".right")) //// 
-    }, false);
+    // Event listener for answers. JQuery would be easier lol.
+    document.addEventListener('click',function(e){
+        if(e.target && e.target.id== 'answerClick'){
+              console.log("hello")
+         }
+     });
+    // Define function isItRight.
+    // If the user selection clicks the right answer, move on. Else, move on with time-5.
+   
+    
 
 
 
-}}
+}//} Commented out the for loop for now
 
 // Define timer function.
 function startTimer() {
