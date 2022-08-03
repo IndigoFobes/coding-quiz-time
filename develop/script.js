@@ -137,28 +137,44 @@ function askQuestion() {
         
     }
 
+    
     // Event listener for answers. JQuery would be easier lol.
     document.body.addEventListener( 'click', function ( e ) {
         if( e.target.id == 'answerClick' ) {
+            // Give a variable to the targeted (clicked) element.
             var d = e.target;
-          isItRight();
+            // Check if it's the right answer...
+            isItRight();
         };
+         // Define function isItRight. (I THINK it has to be defined inside the event listener function because the element we're targeting was was created dynamically, adn we need certain variables defined in there?)
         function isItRight() {
             // If the selected choice is the same as the answer...
             if (d.innerHTML === questions[i].answer) {
-                console.log("correct!")
+                console.log("correct!");
+                // Trigger the function to move on to the next question.
+                nextQuestion();
+            } else {
+                console.log("not it fam.");
+                // Trigger the function to subtract time from timer.
+                subtractTime();
             };
           }
       } );
-    // Define function isItRight.
-    
-    // If the user selection clicks the right answer, move on. Else, move on with time-5.
    
-    
+    // Define nextQuestion
+    function nextQuestion() {
+
+    }
+   
+    // Define subtractTime
+    function subtractTime() {
+        // Subtract 5 seconds from timer.
+        timerCount -= 5;
+    }
 
 
 
-}//} Commented out the for loop for now
+}//} Commented out the for loop for now.
 
 // Define timer function.
 function startTimer() {
