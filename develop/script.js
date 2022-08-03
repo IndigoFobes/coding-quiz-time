@@ -11,18 +11,7 @@ var youLose;
 var timer;
 var timerCount;
 
-//Styles
-//var questionStyles = document.querySelector(".question-styles")
-
-// IDK about this one...
-firstStyle = {
-    "background-color": "purple",
-    "border-radius": "2rem",
-    "width": "10rem",
-    "height": "10rem",
-}
-
-// I will have an array of questions and answers...
+// Array of questions and answers...
 var questions = [
 {question: "What kind of file do you need to include in your repository to describe your application and how to use it?",
 choices: [
@@ -70,7 +59,19 @@ choices: [
 answer: "README.md"},
 ]
 
-//console.log(questions[0].answer);
+// Create a div (a container for each question).
+var questionDiv = document.createElement("div");
+// Add a class to that div (to style in css).
+questionDiv.classList.add("divStyle");
+// This p tag is where the question text goes.
+var questionBox = document.createElement("p"); 
+// Give the question p tag a class (to style in css).
+questionBox.classList.add("questionStyles");
+// Create an un ordered list for the multiple choice answers.
+var questionAnswers = document.createElement("ul");
+// Give it a class for STYLE.
+questionAnswers.classList.add("answerStyles");
+
 
 // This function runs as soon as page loads. It gets user's high score info.
 function init() {
@@ -91,30 +92,17 @@ function startQuiz() {
 
   // This is our starting iteration. 
   let i = 0;
-
 // Define function askQuestion1()
 function askQuestion() {
-   // do { 
-    // Create a div (a container for each question).
-    var questionDiv = document.createElement("div");
-    // Add a class to that div (to style in css).
-    questionDiv.classList.add("divStyle");
+
     // Append this new div to the big box.
     bigBox.appendChild(questionDiv);
-    // This p tag is where the question text goes.
-    var questionBox = document.createElement("p"); 
-    // Give the question p tag a class (to style in css).
-    questionBox.classList.add("questionStyles");
     // The text will be each question within the questions array.
     var questionText = document.createTextNode(questions[i].question);
     // Append text to p tag.
     questionBox.appendChild(questionText);
     // Append the question p tag to the question div wihtin the big box.
     questionDiv.appendChild(questionBox);
-    // Create an un ordered list for the multiple choice answers.
-    var questionAnswers = document.createElement("ul");
-    // Give it a class for STYLE.
-    questionAnswers.classList.add("answerStyles");
     // Append this un ordered list to the question container.
     questionDiv.appendChild(questionAnswers);
     // Remove the center alignment previously placed on this container.
@@ -136,50 +124,33 @@ function askQuestion() {
         newAnswer.setAttribute('id', 'answerClick')
         
     }
-
-
-    // Event listener for answers. JQuery would be easier lol.
-    document.body.addEventListener( 'click', function ( e ) {
-        if( e.target.id == 'answerClick' ) {
-            // Give a variable to the targeted (clicked) element.
-            var d = e.target;
-            // Check if it's the right answer...
-            isItRight();
-        };
-         // Define function isItRight. (I THINK it has to be defined inside the event listener function because the element we're targeting was was created dynamically, adn we need certain variables defined in there?)
-        function isItRight() {
-            // If the selected choice is the same as the answer...
-            if (d.innerHTML === questions[i].answer) {
-                console.log("correct!");
-                // Trigger the function to move on to the next question.
-                nextQuestion();
-            } else {
-                console.log("not it fam.");
-                // Trigger the function to subtract time from timer.
-                subtractTime();
-                nextQuestion();
-            };
-          }
-      } );
-   
-    // Define nextQuestion
-    function nextQuestion() {
-        // First, hide the active div with question/answers
-        questionDiv.classList.add("hideDiv");
-        i++;
-        askQuestion();
-    };
-   
-    // Define subtractTime
-    function subtractTime() {
-        // Subtract 5 seconds from timer.
-        timerCount -= 5;
-    };
-
-    
-
-//} while (i <= questions.length && );
 }
+
+// Event listener for answers. (JQuery would be easier lol.)
+document.body.addEventListener( 'click', function ( e ) {
+    if( e.target.id == 'answerClick' ) {
+        // Give a variable to the targeted (clicked) element.
+        var d = e.target;
+        // Check if it's the right answer...
+        isItRight();
+    };
+     // Define function isItRight. (I THINK it has to be defined inside the event listener function because the element we're targeting was was created dynamically, adn we need certain variables defined in there?)
+    function isItRight() {
+        // If the selected choice is the same as the answer...
+        if (d.innerHTML === questions[i].answer) {
+            console.log("correct!");
+            // Trigger the function to move on to the next question.
+            nextQuestion();
+        } else {
+            console.log("not it fam.");
+            // Trigger the function to subtract time from timer.
+            subtractTime();
+            // And move to next question
+            nextQuestion();
+        };
+      }
+  } );
+
 
 // Define timer function.
 function startTimer() {
