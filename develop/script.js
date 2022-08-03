@@ -73,6 +73,7 @@ var questionAnswers = document.createElement("ul");
 questionAnswers.classList.add("answerStyles");
 
 
+
 // This function runs as soon as page loads. It gets user's high score info.
 function init() {
     //getHighScores()
@@ -87,13 +88,12 @@ function startQuiz() {
     startTimer();
     intro.setAttribute("style", "display: none");
     hideStart.setAttribute("style", "display: none");
-    askQuestion();
+    createDiv();
 }
 
-  // This is our starting iteration. 
-  let i = 0;
+let i=0;
 // Define function askQuestion1()
-function askQuestion() {
+function createDiv() {
 
     // Append this new div to the big box.
     bigBox.appendChild(questionDiv);
@@ -107,7 +107,7 @@ function askQuestion() {
     questionDiv.appendChild(questionAnswers);
     // Remove the center alignment previously placed on this container.
     bigBox.classList.remove("center-alignment");
-
+    //
 
     // This loop goes through each set of choices within each question.
     for (w=0; w<4; w++) {
@@ -120,11 +120,12 @@ function askQuestion() {
         // Now append the new list items to the unordered list created a few lines above, before the loop.
         questionAnswers.appendChild(newAnswer);
         // Give a class for some classy style.
-        newAnswer.classList.add("answers"); 
+        newAnswer.classList.add("answers");
+        // Set id to be referenced in following event listener 
         newAnswer.setAttribute('id', 'answerClick')
-        
     }
-}
+};
+
 
 // Event listener for answers. (JQuery would be easier lol.)
 document.body.addEventListener( 'click', function ( e ) {
@@ -140,14 +141,18 @@ document.body.addEventListener( 'click', function ( e ) {
         // If the selected choice is the same as the answer...
         if (d.innerHTML === questions[i].answer) {
             console.log("correct!");
+            // hide the current div
+            questionDiv.classList.add("hideDiv");
             // Trigger the function to move on to the next question.
-            nextQuestion();
+            askQuestion();
         } else {
             console.log("not it fam.");
+            // hide the current div
+            questionDiv.classList.add("hideDiv");
             // Trigger the function to subtract time from timer.
             subtractTime();
             // And move to next question
-            nextQuestion();
+            askQuestion();
         };
       }
 });
@@ -158,6 +163,10 @@ function subtractTime() {
     timerCount -= 5;
 }
 
+function askQuestion() {
+    i++;
+    createDiv();
+}
 
 // Define timer function.
 function startTimer() {
