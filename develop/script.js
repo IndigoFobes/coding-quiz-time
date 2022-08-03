@@ -92,10 +92,10 @@ function startQuiz() {
 
 // Define function askQuestion1()
 function askQuestion() {
-    // This loop goes through each question. We're gonna create a new set of divs for each question.
-  //  for (i=0; i<questions.length; i++) {
-    // Create a div (a container for each question).
+    // { 
+    // This is our starting iteration. 
     var i = 0;
+    // Create a div (a container for each question).
     var questionDiv = document.createElement("div");
     // Add a class to that div (to style in css).
     questionDiv.classList.add("divStyle");
@@ -163,6 +163,8 @@ function askQuestion() {
    
     // Define nextQuestion
     function nextQuestion() {
+        // First, hide the active div with question/answers
+        questionDiv.classList.add("hideDiv");
 
     }
    
@@ -170,6 +172,7 @@ function askQuestion() {
     function subtractTime() {
         // Subtract 5 seconds from timer.
         timerCount -= 5;
+        nextQuestion();
     }
 
 

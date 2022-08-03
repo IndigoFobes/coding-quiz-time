@@ -121,4 +121,8 @@ header {
     cursor: pointer;
 }
 
+.hideDiv {
+    display: none;
+}
+
 /*rgb(223, 229, 234)*/
