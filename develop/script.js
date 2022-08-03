@@ -134,6 +134,7 @@ document.body.addEventListener( 'click', function ( e ) {
         // Check if it's the right answer...
         isItRight();
     };
+    
      // Define function isItRight. (I THINK it has to be defined inside the event listener function because the element we're targeting was was created dynamically, adn we need certain variables defined in there?)
     function isItRight() {
         // If the selected choice is the same as the answer...
@@ -149,7 +150,13 @@ document.body.addEventListener( 'click', function ( e ) {
             nextQuestion();
         };
       }
-  } );
+});
+
+// Define subtractTime
+function subtractTime() {
+    // Subtract 5 seconds from timer.
+    timerCount -= 5;
+}
 
 
 // Define timer function.
