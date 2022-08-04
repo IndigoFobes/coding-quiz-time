@@ -24,28 +24,28 @@ answer: "README.md"},
 
 {question: "What is this?",
 choices: [
-    "README.md",
-    "index.html",
-    "script.js",
-    "google doc"
+    "New answers",
+    "Hello",
+    "woohoo",
+    "google what?"
 ],
 answer: "README.md"},
 
-{question: "What is this?",
+{question: "New question?",
+choices: [
+    "numberTHREEE",
+    "index.html",
+    "YEEHAW",
+    "google hello"
+],
+answer: "README.md"},
+
+{question: "Hello?",
 choices: [
     "README.md",
     "index.html",
     "script.js",
-    "google doc"
-],
-answer: "README.md"},
-
-{question: "What is this?",
-choices: [
-    "README.md",
-    "index.html",
-    "script.js",
-    "google doc"
+    "google four"
 ],
 answer: "README.md"},
 
@@ -71,6 +71,8 @@ questionBox.classList.add("questionStyles");
 var questionAnswers = document.createElement("ul");
 // Give it a class for STYLE.
 questionAnswers.classList.add("answerStyles");
+// hide the current div
+questionDiv.classList.add("hideDiv");
 
 
 
@@ -91,42 +93,6 @@ function startQuiz() {
     createDiv();
 }
 
-let i=0;
-// Define function askQuestion1()
-function createDiv() {
-
-    // Append this new div to the big box.
-    bigBox.appendChild(questionDiv);
-    // The text will be each question within the questions array.
-    var questionText = document.createTextNode(questions[i].question);
-    // Append text to p tag.
-    questionBox.appendChild(questionText);
-    // Append the question p tag to the question div wihtin the big box.
-    questionDiv.appendChild(questionBox);
-    // Append this un ordered list to the question container.
-    questionDiv.appendChild(questionAnswers);
-    // Remove the center alignment previously placed on this container.
-    bigBox.classList.remove("center-alignment");
-    //
-
-    // This loop goes through each set of choices within each question.
-    for (w=0; w<4; w++) {
-        // Create a list item for each answer choice.
-        var newAnswer = document.createElement("li");
-        // This will grab each item in the choices array and make it the text of each li.
-        var newAnswerText = document.createTextNode(questions[i].choices[w]); 
-        // Append the text to the li.
-        newAnswer.appendChild(newAnswerText);
-        // Now append the new list items to the unordered list created a few lines above, before the loop.
-        questionAnswers.appendChild(newAnswer);
-        // Give a class for some classy style.
-        newAnswer.classList.add("answers");
-        // Set id to be referenced in following event listener 
-        newAnswer.setAttribute('id', 'answerClick')
-    }
-};
-
-
 // Event listener for answers. (JQuery would be easier lol.)
 document.body.addEventListener( 'click', function ( e ) {
     if( e.target.id == 'answerClick' ) {
@@ -134,6 +100,7 @@ document.body.addEventListener( 'click', function ( e ) {
         var d = e.target;
         // Check if it's the right answer...
         isItRight();
+
     };
     
      // Define function isItRight. (I THINK it has to be defined inside the event listener function because the element we're targeting was was created dynamically, adn we need certain variables defined in there?)
@@ -144,6 +111,7 @@ document.body.addEventListener( 'click', function ( e ) {
             // hide the current div
             questionDiv.classList.add("hideDiv");
             // Trigger the function to move on to the next question.
+            questionAnswers.innerHTML="";
             askQuestion();
         } else {
             console.log("not it fam.");
@@ -152,10 +120,58 @@ document.body.addEventListener( 'click', function ( e ) {
             // Trigger the function to subtract time from timer.
             subtractTime();
             // And move to next question
+            questionAnswers.innerHTML="";
             askQuestion();
         };
       }
 });
+
+let i=0;
+
+    // Define function askQuestion1()
+function createDiv() {
+    
+    // Show hidden div.
+    questionDiv.classList.remove("hideDiv");
+    // Append this new div to the big box.
+    bigBox.appendChild(questionDiv);
+    // The text will be each question within the questions array.
+    var questionText = document.createTextNode(questions[i].question);
+    // Append text to p tag.
+    questionBox.innerHTML = "";
+    questionBox.appendChild(questionText);
+    // Append the question p tag to the question div wihtin the big box.
+    questionDiv.appendChild(questionBox);
+    // Append this un ordered list to the question container.
+    questionDiv.appendChild(questionAnswers);
+    // Remove the center alignment previously placed on this container.
+    bigBox.classList.remove("center-alignment");
+    
+
+    // This loop goes through each set of choices within each question.
+    for (var w=0; w<4; w++) {
+        // Create a list item for each answer choice.
+        var newAnswer = document.createElement("li");
+        // This will grab each item in the choices array and make it the text of each li.
+        //var newAnswerText;
+        //newAnswer.innerHTML = questions[i].choices[w];
+        newAnswer.textContent = questions[i].choices[w];
+        //var newAnswerText = document.createTextNode(questions[i].choices[w]); 
+        // Append the text to the li.
+        //newAnswer.appendChild(newAnswerText);
+        // Now append the new list items to the unordered list created a few lines above, before the loop.
+        //questionAnswers.innerHTML = newAnswerText;
+        questionAnswers.appendChild(newAnswer);
+        // Give a class for some classy style.
+        newAnswer.classList.add("answers");
+        // Set id to be referenced in following event listener 
+        newAnswer.setAttribute('id', 'answerClick')
+    }
+
+};
+
+
+
 
 // Define subtractTime
 function subtractTime() {
