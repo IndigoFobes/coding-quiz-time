@@ -197,8 +197,35 @@ function endQuiz() {
     console.log(timerCount);
     // Stop timer
     clearInterval(timer);
+    createEndDiv()
 }
 
+// Define end div function
+function createEndDiv() {
+    var endDiv = document.createElement('div');
+    var endDivText = document.createElement('h2');
+    endDiv.setAttribute('id', 'end-div');
+    endDiv.appendChild(endDivText);
+    endDivText.textContent = "Nice Job. Your score is...";
+    endDivText.setAttribute('id', 'end-div-text');
+    var score = document.createElement('p');
+    score.textContent = timerCount;
+    score.setAttribute('id', 'score-style');
+    endDiv.appendChild(score);
+    bigBox.appendChild(endDiv);
+    var form = document.createElement('form');
+    var enterInitials = document.createElement('input');
+    endDiv.appendChild(form);
+    form.appendChild(enterInitials);
+    enterInitials.setAttribute('id', 'enter-initials');
+    enterInitials.setAttribute('placeholder', 'Enter your initials here!');
+    var btn = document.createElement('button');
+    btn.setAttribute('type', 'button');
+    btn.setAttribute('value', 'Submit');
+    btn.setAttribute('id', 'submit-button');
+    form.appendChild(btn);
+
+}
 
 // Define subtractTime
 function subtractTime() {

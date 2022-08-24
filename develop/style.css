@@ -125,4 +125,35 @@ header {
     display: none;
 }
 
+#end-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#end-div-text {
+    font-size: 3rem
+}
+
+#score-style {
+    font-size: 6rem;
+    position: relative;
+    top: 75px;
+}
+
+#enter-initials {
+    position: relative;
+    top: 150px;
+    font-size: 2rem;
+}
+
+#submit-button {
+    position: relative;
+    top: 150px;
+    font-size: 2rem;
+    min-width: 60px;
+    min-height: 20px;
+    margin-left: 2rem;
+}
 /*rgb(223, 229, 234)*/
