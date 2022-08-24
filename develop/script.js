@@ -13,7 +13,7 @@ var timerCount;
 
 // Array of questions and answers...
 var questions = [
-{question: "What kind of file do you need to include in your repository to describe your application and how to use it?",
+{question: "What kind of file do you need to include in your repository in order to describe your application and how to use it?",
 choices: [
     "README.md",
     "index.html",
@@ -22,41 +22,41 @@ choices: [
 ],
 answer: "README.md"},
 
-{question: "What is this?",
+{question: "What does 'npm' stand for?",
 choices: [
-    "New answers",
-    "Hello",
-    "woohoo",
-    "google what?"
+    "New Program Maintenance",
+    "Node Protection Model",
+    "Node Package Manager",
+    "Next Processing Mode"
 ],
-answer: "README.md"},
+answer: "Node Package Manager"},
 
-{question: "New question?",
+{question: "Which HTML tag does not need a closing tag?",
 choices: [
-    "numberTHREEE",
-    "index.html",
-    "YEEHAW",
-    "google hello"
+    "<form>",
+    "<input>",
+    "<html>",
+    "<p>"
 ],
-answer: "README.md"},
+answer: "<input>"},
 
-{question: "Hello?",
+{question: "______ function rounds a number down to its nearest integer.",
 choices: [
-    "README.md",
-    "index.html",
-    "script.js",
-    "google four"
+    "Math.floor()",
+    "Math.random()",
+    "Math.ceil()",
+    "Math.min()"
 ],
-answer: "README.md"},
+answer: "Math.floor()"},
 
-{question: "What is this?",
+{question: "Elements are styled in a CSS file using which of the following?",
 choices: [
-    "README.md",
-    "index.html",
-    "script.js",
-    "google doc"
+    "Parentheses",
+    "Quotation marks",
+    "Curly brackets",
+    "All of the above"
 ],
-answer: "README.md"},
+answer: "Curly brackets"},
 ]
 
 // Create a div (a container for each question).
@@ -93,14 +93,18 @@ function startQuiz() {
     createDiv();
 }
 
+let questionsAnswered = 0;
+
+
 // Event listener for answers. (JQuery would be easier lol.)
 document.body.addEventListener( 'click', function ( e ) {
     if( e.target.id == 'answerClick' ) {
         // Give a variable to the targeted (clicked) element.
         var d = e.target;
+        questionsAnswered++; 
         // Check if it's the right answer...
         isItRight();
-
+        console.log(questionsAnswered);
     };
     
      // Define function isItRight. (I THINK it has to be defined inside the event listener function because the element we're targeting was was created dynamically, adn we need certain variables defined in there?)
@@ -112,7 +116,11 @@ document.body.addEventListener( 'click', function ( e ) {
             questionDiv.classList.add("hideDiv");
             // Trigger the function to move on to the next question.
             questionAnswers.innerHTML="";
+            if (questionsAnswered === 5) {
+                console.log('done');
+            } else {
             askQuestion();
+            }
         } else {
             console.log("not it fam.");
             // hide the current div
@@ -121,8 +129,14 @@ document.body.addEventListener( 'click', function ( e ) {
             subtractTime();
             // And move to next question
             questionAnswers.innerHTML="";
+            if (questionsAnswered === 5) {
+                console.log('done');
+            } else {
             askQuestion();
+            }
         };
+
+
       }
 });
 
@@ -136,16 +150,18 @@ function createDiv() {
     // Append this new div to the big box.
     bigBox.appendChild(questionDiv);
     // The text will be each question within the questions array.
-    var questionText = document.createTextNode(questions[i].question);
-    // Append text to p tag.
+    //var questionText = document.createTextNode(questions[i].question);
+    // Reset question text
     questionBox.innerHTML = "";
-    questionBox.appendChild(questionText);
+     // Append text to p tag.
+    questionBox.textContent = questions[i].question;
     // Append the question p tag to the question div wihtin the big box.
     questionDiv.appendChild(questionBox);
     // Append this un ordered list to the question container.
     questionDiv.appendChild(questionAnswers);
     // Remove the center alignment previously placed on this container.
     bigBox.classList.remove("center-alignment");
+   
     
 
     // This loop goes through each set of choices within each question.
@@ -166,7 +182,10 @@ function createDiv() {
         newAnswer.classList.add("answers");
         // Set id to be referenced in following event listener 
         newAnswer.setAttribute('id', 'answerClick')
+        
     }
+
+    
 
 };
 
