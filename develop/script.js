@@ -11,6 +11,9 @@ var youLose;
 var timer;
 var timerCount;
 
+// No questions answered at beginning of quiz
+let questionsAnswered = 0;
+
 // Array of questions and answers...
 var questions = [
 {question: "What kind of file do you need to include in your repository in order to describe your application and how to use it?",
@@ -93,8 +96,6 @@ function startQuiz() {
     createDiv();
 }
 
-let questionsAnswered = 0;
-
 
 // Event listener for answers. (JQuery would be easier lol.)
 document.body.addEventListener( 'click', function ( e ) {
@@ -118,6 +119,7 @@ document.body.addEventListener( 'click', function ( e ) {
             questionAnswers.innerHTML="";
             if (questionsAnswered === 5) {
                 console.log('done');
+                endQuiz();
             } else {
             askQuestion();
             }
@@ -131,6 +133,7 @@ document.body.addEventListener( 'click', function ( e ) {
             questionAnswers.innerHTML="";
             if (questionsAnswered === 5) {
                 console.log('done');
+                endQuiz();
             } else {
             askQuestion();
             }
@@ -189,7 +192,12 @@ function createDiv() {
 
 };
 
-
+// Define end of quiz
+function endQuiz() {
+    console.log(timerCount);
+    // Stop timer
+    clearInterval(timer);
+}
 
 
 // Define subtractTime
