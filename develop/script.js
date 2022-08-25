@@ -12,6 +12,11 @@ var youLose;
 var timer;
 var timerCount;
 
+const savedScore = {
+    initials: '',
+    score: ''
+};
+
 // No questions answered at beginning of quiz
 let questionsAnswered = 0;
 
@@ -189,8 +194,6 @@ function createDiv() {
         
     }
 
-    
-
 };
 
 // Define end of quiz
@@ -208,8 +211,13 @@ function showEndDiv() {
     enterInitials.classList.remove('hide');
     // Show user's score
     score.textContent = timerCount;
+    // Set savedScore details to put into local storage
+    var userInitials = document.getElementById('initials').value;
+    savedScore.initials = userInitials;
+    savedScore.score = timerCount;
+    const jsonObj = JSON.stringify(savedScore);
     // Set initials and score to local storage
-    localStorage.setItem('newScore', timerCount);
+    localStorage.setItem('newScore', jsonObj);
 }
 
 // Define subtractTime
