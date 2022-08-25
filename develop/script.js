@@ -203,11 +203,13 @@ function endQuiz() {
 
 // Define end div function
 function showEndDiv() {
+    // Show the form div
     var enterInitials = document.querySelector('.enter-initials');
     enterInitials.classList.remove('hide');
-    // Show what their score is
+    // Show user's score
     score.textContent = timerCount;
-
+    // Set initials and score to local storage
+    localStorage.setItem('newScore', timerCount);
 }
 
 // Define subtractTime

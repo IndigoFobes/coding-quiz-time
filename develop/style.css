@@ -132,30 +132,33 @@ header {
     align-items: center;
 }
 
-#end-div-text {
-    font-size: 3rem
+#your-score {
+    font-size: 3rem;
+    text-align: center;
+    margin: 3rem;
 }
 
-#score-style {
-    font-size: 6rem;
-    position: relative;
-    top: 75px;
+#score-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
 }
 
-#enter-initials {
-    position: relative;
-    top: 150px;
+#initials {
     font-size: 2rem;
 }
 
-#submit-button {
-    position: relative;
-    top: 150px;
+#btn {
+    background-color: rgb(162, 186, 205);
+    border-style: none;
+    box-shadow: .1rem;
+    padding: .2rem .5rem;
+    border-radius: .5rem;
     font-size: 2rem;
-    min-width: 60px;
-    min-height: 20px;
-    margin-left: 2rem;
 }
+
 
 .hide {
     display: none;
