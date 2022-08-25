@@ -5,6 +5,7 @@ var intro = document.querySelector(".intro");
 var startQuizBtn = document.querySelector(".start-quiz");
 var hideStart = document.querySelector(".hide-start");
 var bigBox = document.querySelector(".big-box");
+var score = document.getElementById('score');
 
 var youWin = false;
 var youLose;
@@ -204,6 +205,8 @@ function endQuiz() {
 function showEndDiv() {
     var enterInitials = document.querySelector('.enter-initials');
     enterInitials.classList.remove('hide');
+    // Show what their score is
+    score.textContent = timerCount;
 
 }
 
