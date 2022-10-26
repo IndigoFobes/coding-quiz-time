@@ -1,21 +1,25 @@
 // define all the variables. YAY!
-var highScores = document.querySelector(".high-scores")
+var highScores = document.querySelector("#high-scores")
 var timerElement = document.querySelector(".timer-element");
 var intro = document.querySelector(".intro");
 var startQuizBtn = document.querySelector(".start-quiz");
 var hideStart = document.querySelector(".hide-start");
 var bigBox = document.querySelector(".big-box");
 var score = document.getElementById('score');
+var submitBtn = document.querySelector("#btn");
+
 
 var youWin = false;
 var youLose;
 var timer;
 var timerCount;
 
-const savedScore = {
-    initials: '',
-    score: ''
-};
+// const savedScore = {
+//     initials: '',
+//     score: ''
+// };
+
+const scoreArray = [];
 
 // No questions answered at beginning of quiz
 let questionsAnswered = 0;
@@ -42,12 +46,12 @@ answer: "Node Package Manager"},
 
 {question: "Which HTML tag does not need a closing tag?",
 choices: [
-    "<form>",
-    "<input>",
-    "<html>",
-    "<p>"
+    "form",
+    "input",
+    "html",
+    "p"
 ],
-answer: "<input>"},
+answer: "input"},
 
 {question: "______ function rounds a number down to its nearest integer.",
 choices: [
@@ -87,9 +91,17 @@ questionDiv.classList.add("hideDiv");
 
 // This function runs as soon as page loads. It gets user's high score info.
 function init() {
-    //getHighScores()
+
+    // get highscores from local storage
+    const highScores = JSON.parse(localStorage.getItem('scores'));
+
+    console.log(highScores);
 }
 
+// Event listener for high score button to go to highscore page
+highScores.addEventListener('click', function() {
+    document.location.replace('./viewscores.html');
+})
 
 // Define startQuiz function: When quiz starts, the timer is at 90. 
 // The startTimer function is called, so that the time immediately begins decrementing.
@@ -204,20 +216,30 @@ function endQuiz() {
     showEndDiv()
 }
 
+function saveToStorage() {
+        // Set savedScore details to put into local storage
+        var userInitials = document.getElementById('#score-form').value;
+        const savedScore = userInitials + ',' + timerCount;
+
+        console.log('***** ', savedScore)
+            //const jsonObj = JSON.stringify(savedScore);
+        // Push this score object into the score array
+        scoreArray.push(savedScore);
+    
+        // Set initials and score to local storage
+        localStorage.setItem('scores', JSON.stringify(scoreArray));
+}
+
 // Define end div function
 function showEndDiv() {
     // Show the form div
     var enterInitials = document.querySelector('.enter-initials');
     enterInitials.classList.remove('hide');
+
     // Show user's score
     score.textContent = timerCount;
-    // Set savedScore details to put into local storage
-    var userInitials = document.getElementById('initials').value;
-    savedScore.initials = userInitials;
-    savedScore.score = timerCount;
-    const jsonObj = JSON.stringify(savedScore);
-    // Set initials and score to local storage
-    localStorage.setItem('newScore', jsonObj);
+
+    submitBtn.addEventListener('click', saveToStorage())
 }
 
 // Define subtractTime
