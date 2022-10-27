@@ -6,7 +6,6 @@ var startQuizBtn = document.querySelector(".start-quiz");
 var hideStart = document.querySelector(".hide-start");
 var bigBox = document.querySelector(".big-box");
 var score = document.getElementById('score');
-var submitBtn = document.querySelector("#btn");
 
 
 var youWin = false;
@@ -208,38 +207,40 @@ function createDiv() {
 
 };
 
+function saveToStorage(event) {
+    event.preventDefault();
+    // Set savedScore details to put into local storage
+    var userInitials = document.querySelector('#initials').value.trim();
+    const savedScore = userInitials + ',' + timerCount;
+
+    console.log('***** ', savedScore)
+        //const jsonObj = JSON.stringify(savedScore);
+    // Push this score object into the score array
+    scoreArray.push(savedScore);
+
+    // Set initials and score to local storage
+    localStorage.setItem('scores', JSON.stringify(scoreArray));
+}
+
+// Define end div function
+function showEndDiv() {
+// Show the form div
+var enterInitials = document.querySelector('.enter-initials');
+enterInitials.classList.remove('hide');
+
+// Show user's score
+score.textContent = timerCount;
+
+const submitBtn = document.querySelector("#btn");
+submitBtn.addEventListener('click', saveToStorage);
+}
+
 // Define end of quiz
 function endQuiz() {
     console.log(timerCount);
     // Stop timer
     clearInterval(timer);
     showEndDiv()
-}
-
-function saveToStorage() {
-        // Set savedScore details to put into local storage
-        var userInitials = document.getElementById('#score-form').value;
-        const savedScore = userInitials + ',' + timerCount;
-
-        console.log('***** ', savedScore)
-            //const jsonObj = JSON.stringify(savedScore);
-        // Push this score object into the score array
-        scoreArray.push(savedScore);
-    
-        // Set initials and score to local storage
-        localStorage.setItem('scores', JSON.stringify(scoreArray));
-}
-
-// Define end div function
-function showEndDiv() {
-    // Show the form div
-    var enterInitials = document.querySelector('.enter-initials');
-    enterInitials.classList.remove('hide');
-
-    // Show user's score
-    score.textContent = timerCount;
-
-    submitBtn.addEventListener('click', saveToStorage())
 }
 
 // Define subtractTime
