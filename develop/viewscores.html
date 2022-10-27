@@ -4,23 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>View Scores</title>
+    <link rel="stylesheet" href="reset.css">
     <!-- Tailwind CSS -->
     <link
     rel='stylesheet'
     href='https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css'
     />
 </head>
-<body>
-    <main class="container mx-auto">
-        <header class="header">
-            <h1 id="highscores-h1">Check out your high scores!</h1>
-        </header>
-        <ul id="highscores">
-            <!-- li items to appendec dynamically -->
-        </ul>
+<body class="bg-blue-200">
+    <main class="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+        <container class="container flex flex-col bg-white rounded-md items-center">
+            <div class="flex-wrap text-center my-5 text-3xl">
+                <h1 id="highscores-h1">Check out your high scores!</h1>
+            </div>
+            <div class="text-center my-10">
+                <ol id="highscores" type="1">
+                <!-- li items to appendec dynamically -->
+                </ol>
+            </div>
+            <div class="flex text-lg">
+                <button class="button py-2 bg-blue-300 py-2 px-3 rounded-md mb-3" type="submit" id="to-home">Back to Home</button>
+                <button class="button py-2 bg-blue-300 py-2 px-3 rounded-md mb-3 mx-2" type="submit" id="clear">Clear High Scores</button>
+            </div>
+        </container>
     </main>
-    
     <script src="scores.js"></script>
+    <!--tailwind linking-->
+    <script rel='stylesheet' src='https://cdn.tailwindcss.com'></script>
+    <!-- Tailwind Elements -->
+    <script
+    src='https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js'
+    ></script>
 </body>
 </html>

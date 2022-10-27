@@ -51,7 +51,7 @@ header {
 }
 
 .intro {
-    color: rgb(233, 160, 33);
+   /* color: rgb(233, 160, 33); */
     margin: 4%;
     text-align: center;
     font-size: 5rem;
@@ -60,7 +60,7 @@ header {
 .big-box {
     width: 70%;
     height: 70%;
-    background-color: rgb(223, 229, 234);
+   /* background-color: rgb(223, 229, 234); */
     margin: 20px 50px;
     padding: 40px;
     align-self: center;
@@ -79,11 +79,11 @@ header {
     display: flex;
     align-self: center;
     font-size: 4rem;
-    background-color: rgb(246, 229, 158);
+   /* background-color: rgb(246, 229, 158);
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 2rem; 
     border-width: 1rem;
-    border-color: rgb(233, 160, 33);
+    border-color: rgb(233, 160, 33); */
 }
 
 .divStyle {
@@ -151,7 +151,7 @@ header {
 }
 
 #btn {
-    background-color: rgb(162, 186, 205);
+   /* background-color: rgb(162, 186, 205); */
     border-style: none;
     box-shadow: .1rem;
     padding: .2rem .5rem;

@@ -23,8 +23,7 @@ if (localStorage.getItem('scores')) {
 
 // set up localStorage with current values
 localStorage.setItem('scores', JSON.stringify(scoreArray));
-// variable to reference later... *** might go into other js file
-var scoreData = JSON.parse(localStorage.getItem('scores'));
+
 
 // No questions answered at beginning of quiz
 let questionsAnswered = 0;
@@ -206,9 +205,11 @@ function createDiv() {
 
 function saveToStorage(event) {
     event.preventDefault();
+    // go to high score page
+    document.location.replace('./viewscores.html');
     // Set savedScore details to put into local storage
     var userInitials = document.querySelector('#initials').value.trim();
-    let savedScore = userInitials + ',' + timerCount;
+    let savedScore = userInitials + ', ' + timerCount;
 
     //console.log('***** ', savedScore)
         //const jsonObj = JSON.stringify(savedScore);
