@@ -88,15 +88,6 @@ questionDiv.classList.add("hideDiv");
 
 
 
-// This function runs as soon as page loads. It gets user's high score info.
-function init() {
-
-    // get highscores from local storage
-    const highScores = JSON.parse(localStorage.getItem('scores'));
-
-    console.log(highScores);
-}
-
 // Event listener for high score button to go to highscore page
 highScores.addEventListener('click', function() {
     document.location.replace('./viewscores.html');
@@ -273,8 +264,5 @@ function startTimer() {
 
 // When button is clicked, quiz starts.
 startQuizBtn.addEventListener("click", startQuiz);
-
-init()
-
 
 
