@@ -8,6 +8,7 @@ body {
     padding: 0;
     height: 100%;
     background-color: white;
+    font-family: "Source Code Pro", sans-serif
 }
 
 body {
@@ -68,6 +69,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    font-weight: 700;
 }
 
 .center-alignment {
@@ -79,6 +81,7 @@ header {
     display: flex;
     align-self: center;
     font-size: 4rem;
+    font-weight: 600;
    /* background-color: rgb(246, 229, 158);
     border-radius: 1rem;
     padding: 2rem; 
@@ -100,12 +103,14 @@ header {
     font-size: 3.4rem;
     justify-content: flex-start;
     margin: 1.5rem 2rem 1rem 2rem;
+    font-weight: 600;
 }
 
 .answerStyles {
     font-size: 3rem;
     margin: 3rem;
     margin-bottom: 1rem;
+    font-weight: 400;
 }
 
 /* for styling between individual answers */
